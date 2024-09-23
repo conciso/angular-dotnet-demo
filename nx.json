@@ -56,6 +56,29 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build",
+        "codegen",
+        "^codegen"
+      ]
+    },
+    "codegen": {
+      "cache": true
+    },
+    "swagger": {
+      "cache": true
     }
   },
   "generators": {
@@ -67,6 +90,26 @@
     }
   },
   "plugins": [
-    "@nx-dotnet/core"
+    {
+      "plugin": "@nx-dotnet/core",
+      "options": {
+        "solutionFile": "{npmScope}.nx-dotnet.sln",
+        "inferProjects": true,
+        "nugetPackages": {
+          "Microsoft.AspNetCore.OpenApi": "8.0.8",
+          "Swashbuckle.AspNetCore": "6.8.0"
+        },
+        "inferredTargets": {
+          "build": "build",
+          "lint": "lint",
+          "serve": "serve",
+          "test": "test"
+        },
+        "ignorePaths": [],
+        "tags": [
+          "nx-dotnet"
+        ]
+      }
+    }
   ]
 }
