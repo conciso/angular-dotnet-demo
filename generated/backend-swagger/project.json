@@ -10,7 +10,7 @@
       "executor": "@nx-dotnet/core:openapi-codegen",
       "options": {
         "useOpenApiGenerator": true,
-        "openApiGenerator": "typescript",
+        "openApiGenerator": "typescript-angular",
         "openapiJsonPath": "generated/backend-swagger",
         "outputProject": "generated-backend-types"
       },

@@ -45,11 +45,20 @@
     },
     "@nx/js:tsc": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "build": {
-      "dependsOn": ["^build", "codegen", "^codegen"]
+      "dependsOn": [
+        "^build",
+        "codegen",
+        "^codegen"
+      ]
     },
     "codegen": {
       "cache": true
@@ -66,5 +75,7 @@
       "unitTestRunner": "jest"
     }
   },
-  "plugins": ["@nx-dotnet/core"]
+  "plugins": [
+    "@nx-dotnet/core"
+  ]
 }
