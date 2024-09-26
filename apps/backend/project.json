@@ -9,7 +9,7 @@
       "executor": "@nx-dotnet/core:update-swagger",
       "outputs": ["{workspaceRoot}/generated/backend-swagger"],
       "options": {
-        "output": "generated/backend-swagger"
+        "output": "generated/backend-swagger/swagger.json"
       },
       "dependsOn": ["build"]
     }
