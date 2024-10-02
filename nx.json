@@ -45,20 +45,11 @@
     },
     "@nx/js:tsc": {
       "cache": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "build": {
-      "dependsOn": [
-        "^build",
-        "codegen",
-        "^codegen"
-      ]
+      "dependsOn": ["^build", "codegen", "^codegen"]
     },
     "codegen": {
       "cache": true
@@ -73,9 +64,13 @@
       "linter": "eslint",
       "style": "css",
       "unitTestRunner": "jest"
+    },
+    "@nx-dotnet/core:application": {
+      "solutionFile": "angular-dotnet-demo.sln"
+    },
+    "@nx-dotnet/core:library": {
+      "solutionFile": "angular-dotnet-demo.sln"
     }
   },
-  "plugins": [
-    "@nx-dotnet/core"
-  ]
+  "plugins": ["@nx-dotnet/core"]
 }
