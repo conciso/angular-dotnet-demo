@@ -1,0 +1,4 @@
+to apply Migrations or create new DB:
+run this command from this folder:
+
+dotnet ef database update --startup-project ../../apps/api

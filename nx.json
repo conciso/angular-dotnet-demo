@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -12,14 +15,21 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml"
+    ]
   },
   "nxCloudId": "66f11bf2927c3b4c91f50da9",
   "targetDefaults": {
     "@angular-devkit/build-angular:application": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "@nx/eslint:lint": {
       "cache": true,
@@ -32,7 +42,11 @@
     },
     "@nx/jest:jest": {
       "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ],
       "options": {
         "passWithNoTests": true
       },
@@ -45,11 +59,20 @@
     },
     "@nx/js:tsc": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "build": {
-      "dependsOn": ["^build", "codegen", "^codegen"]
+      "dependsOn": [
+        "^build",
+        "codegen",
+        "^codegen"
+      ]
     },
     "codegen": {
       "cache": true
@@ -72,5 +95,33 @@
       "solutionFile": "angular-dotnet-demo.sln"
     }
   },
-  "plugins": ["@nx-dotnet/core"]
+  "plugins": [
+    {
+      "plugin": "@nx-dotnet/core",
+      "options": {
+        "solutionFile": "{npmScope}.nx-dotnet.sln",
+        "inferProjects": true,
+        "nugetPackages": {
+          "Microsoft.EntityFrameworkCore": "8.0.8",
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.8",
+          "Microsoft.EntityFrameworkCore.Design": "8.0.8",
+          "Microsoft.EntityFrameworkCore.Relational": "8.0.8"
+        },
+        "inferredTargets": {
+          "build": "build",
+          "lint": "lint",
+          "serve": "serve",
+          "test": "test"
+        },
+        "ignorePaths": [],
+        "tags": [
+          "nx-dotnet",
+          "nx-dotnet",
+          "nx-dotnet",
+          "nx-dotnet",
+          "nx-dotnet"
+        ]
+      }
+    }
+  ]
 }
