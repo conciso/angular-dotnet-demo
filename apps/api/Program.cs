@@ -1,3 +1,4 @@
+using AngularDotnetDemo.Core.Dtos;
 using AngularDotnetDemo.Core.Entities;
 using AngularDotnetDemo.Infrastructure;
 
@@ -26,12 +27,12 @@ app.MapGet("/api/Events/{id:long}", async (long id, EventDbContext context) =>
   // just for testing purpose
   await context.Events.FindAsync(id)
   is Event @event
-  ? Results.Ok(@event)
+  ? Results.Ok(new EventDto(@event))
   : Results.NotFound()
 )
   .WithName("GetEventById")
   .Produces(StatusCodes.Status404NotFound)
-  .Produces<Event>(StatusCodes.Status200OK)
+  .Produces<EventDto>(StatusCodes.Status200OK)
   .WithOpenApi();
 
 app.Run();
